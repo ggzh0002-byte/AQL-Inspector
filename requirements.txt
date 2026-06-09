@@ -1,0 +1,8 @@
+# AQL判定工具 - 依赖
+# 桌面版需要 tkinter（Python 内置）+ pyinstaller
+# 移动版需要 kivy
+
+kivy>=2.2.0
+
+# 桌面版打包 (可选)
+# pyinstaller>=5.0
