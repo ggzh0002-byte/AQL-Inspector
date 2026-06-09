@@ -52,13 +52,31 @@ C = {
 # KV 布局 (内嵌字符串，避免文件加载问题)
 # ============================================================
 KV = """
+#:set bg_root (0.063, 0.063, 0.110, 1)
+#:set bg_card (0.110, 0.125, 0.200, 1)
+#:set bg_input (0.157, 0.173, 0.251, 1)
+#:set bg_btn (0.212, 0.231, 0.349, 1)
+#:set bg_btn_press (0.275, 0.298, 0.443, 1)
+#:set fg (0.878, 0.878, 0.878, 1)
+#:set fg_header (1.0,   1.0,   1.0,   1)
+#:set fg_dim (0.533, 0.533, 0.533, 1)
+#:set green (0.298, 0.875, 0.502, 1)
+#:set green_bg (0.082, 0.216, 0.145, 1)
+#:set red (1.0,   0.333, 0.400, 1)
+#:set red_bg (0.196, 0.078, 0.078, 1)
+#:set blue (0.357, 0.620, 1.0,   1)
+#:set orange (1.0,   0.549, 0.259, 1)
+#:set judge_btn (0.831, 0.220, 0.051, 1)
+#:set judge_press (1.0,   0.302, 0.180, 1)
+#:set separator (0.176, 0.192, 0.282, 1)
+
 <Card>:
     orientation: 'vertical'
     padding: [dp(14), dp(12)]
     spacing: dp(8)
     canvas.before:
         Color:
-            rgba: C['bg_card']
+            rgba: bg_card
         RoundedRectangle:
             pos: self.pos
             size: self.size
@@ -67,7 +85,7 @@ KV = """
 <TitleLabel@Label>:
     font_size: '16sp'
     bold: True
-    color: C['fg_header']
+    color: fg_header
     size_hint_y: None
     height: dp(32)
     text_size: self.width, None
@@ -77,7 +95,7 @@ KV = """
 
 <FieldLabel@Label>:
     font_size: '14sp'
-    color: C['fg']
+    color: fg
     size_hint_y: None
     height: dp(26)
     text_size: self.width, None
@@ -95,9 +113,9 @@ KV = """
     size_hint_y: None
     height: dp(48)
     font_size: '16sp'
-    foreground_color: C['fg']
-    background_color: C['bg_input']
-    cursor_color: C['fg']
+    foreground_color: fg
+    background_color: bg_input
+    cursor_color: fg
     padding: [dp(10), dp(12), dp(10), dp(12)]
     input_filter: 'int'
     multiline: False
@@ -106,11 +124,11 @@ KV = """
     size_hint_y: None
     height: dp(48)
     font_size: '15sp'
-    foreground_color: C['fg']
-    background_color: C['bg_input']
+    foreground_color: fg
+    background_color: bg_input
     background_normal: ''
-    background_down: C['bg_btn_press']
-    color: C['fg']
+    background_down: bg_btn_press
+    color: fg
     padding: [dp(10), dp(12)]
 
 <ValueLabel@Label>:
@@ -126,7 +144,7 @@ KV = """
     orientation: 'vertical'
     canvas.before:
         Color:
-            rgba: C['bg_root']
+            rgba: bg_root
         Rectangle:
             pos: self.pos
             size: self.size
@@ -138,7 +156,7 @@ KV = """
         padding: [dp(14), 0]
         canvas.before:
             Color:
-                rgba: C['bg_card']
+                rgba: bg_card
             Rectangle:
                 pos: self.pos
                 size: self.size
@@ -147,7 +165,7 @@ KV = """
             text: 'AQL 判定工具'
             font_size: '20sp'
             bold: True
-            color: C['fg_header']
+            color: fg_header
             size_hint_x: 0.7
             text_size: self.width, None
             halign: 'left'
@@ -156,7 +174,7 @@ KV = """
         Label:
             text: 'ISO 2859-1'
             font_size: '12sp'
-            color: C['fg_dim']
+            color: fg_dim
             size_hint_x: 0.3
             text_size: self.width, None
             halign: 'right'
@@ -168,7 +186,7 @@ KV = """
         do_scroll_x: False
         do_scroll_y: True
         bar_width: dp(4)
-        bar_color: C['bg_btn']
+        bar_color: bg_btn
 
         BoxLayout:
             orientation: 'vertical'
@@ -208,12 +226,12 @@ KV = """
                     FieldLabel:
                         id: code_label
                         text: '字码: —'
-                        color: C['blue']
+                        color: blue
                         bold: True
                     FieldLabel:
                         id: sample_label
                         text: '应抽: —'
-                        color: C['orange']
+                        color: orange
                         bold: True
 
                 BoxLayout:
@@ -222,7 +240,7 @@ KV = """
                     height: dp(4)
                     canvas:
                         Color:
-                            rgba: C['separator']
+                            rgba: separator
                         Rectangle:
                             pos: self.pos
                             size: self.size
@@ -231,12 +249,12 @@ KV = """
                 FieldRow:
                     FieldLabel:
                         text: '缺陷类别'
-                        color: C['fg_dim']
+                        color: fg_dim
                         font_size: '12sp'
                         size_hint_x: 0.4
                     FieldLabel:
                         text: 'AQL 值'
-                        color: C['fg_dim']
+                        color: fg_dim
                         font_size: '12sp'
                         size_hint_x: 0.3
 
@@ -286,12 +304,12 @@ KV = """
                         size_hint_x: 0.4
                     ValueLabel:
                         text: 'Ac'
-                        color: C['fg_dim']
+                        color: fg_dim
                         font_size: '14sp'
                         size_hint_x: 0.3
                     ValueLabel:
                         text: 'Re'
-                        color: C['fg_dim']
+                        color: fg_dim
                         font_size: '14sp'
                         size_hint_x: 0.3
 
@@ -302,12 +320,12 @@ KV = """
                     ValueLabel:
                         id: ac_critical
                         text: '—'
-                        color: C['blue']
+                        color: blue
                         size_hint_x: 0.3
                     ValueLabel:
                         id: re_critical
                         text: '—'
-                        color: C['blue']
+                        color: blue
                         size_hint_x: 0.3
 
                 FieldRow:
@@ -317,12 +335,12 @@ KV = """
                     ValueLabel:
                         id: ac_major
                         text: '—'
-                        color: C['blue']
+                        color: blue
                         size_hint_x: 0.3
                     ValueLabel:
                         id: re_major
                         text: '—'
-                        color: C['blue']
+                        color: blue
                         size_hint_x: 0.3
 
                 FieldRow:
@@ -332,12 +350,12 @@ KV = """
                     ValueLabel:
                         id: ac_minor
                         text: '—'
-                        color: C['blue']
+                        color: blue
                         size_hint_x: 0.3
                     ValueLabel:
                         id: re_minor
                         text: '—'
-                        color: C['blue']
+                        color: blue
                         size_hint_x: 0.3
 
             # ========== 批次判定 ==========
@@ -358,7 +376,7 @@ KV = """
                     Label:
                         text: '件'
                         font_size: '13sp'
-                        color: C['fg_dim']
+                        color: fg_dim
                         size_hint_x: 0.1
                         text_size: self.width, None
                         halign: 'left'
@@ -375,7 +393,7 @@ KV = """
                     Label:
                         text: '个'
                         font_size: '13sp'
-                        color: C['fg_dim']
+                        color: fg_dim
                         size_hint_x: 0.1
                         text_size: self.width, None
                         halign: 'left'
@@ -392,7 +410,7 @@ KV = """
                     Label:
                         text: '个'
                         font_size: '13sp'
-                        color: C['fg_dim']
+                        color: fg_dim
                         size_hint_x: 0.1
                         text_size: self.width, None
                         halign: 'left'
@@ -409,7 +427,7 @@ KV = """
                     Label:
                         text: '个'
                         font_size: '13sp'
-                        color: C['fg_dim']
+                        color: fg_dim
                         size_hint_x: 0.1
                         text_size: self.width, None
                         halign: 'left'
@@ -419,7 +437,7 @@ KV = """
                     id: adjust_label
                     text: ''
                     font_size: '12sp'
-                    color: C['orange']
+                    color: orange
                     size_hint_y: None
                     height: dp(20)
                     text_size: self.width, None
@@ -433,9 +451,9 @@ KV = """
                     font_size: '22sp'
                     bold: True
                     color: (1, 1, 1, 1)
-                    background_color: C['judge_btn']
+                    background_color: judge_btn
                     background_normal: ''
-                    background_down: C['judge_press']
+                    background_down: judge_press
                     size_hint_y: None
                     height: dp(58)
                     on_release: root.on_judge()
@@ -451,7 +469,7 @@ KV = """
                     id: result_critical
                     text: '致命缺陷: —'
                     font_size: '14sp'
-                    color: C['fg']
+                    color: fg
                     size_hint_y: None
                     height: dp(28)
                     text_size: self.width, None
@@ -462,7 +480,7 @@ KV = """
                     id: result_major
                     text: '严重缺陷: —'
                     font_size: '14sp'
-                    color: C['fg']
+                    color: fg
                     size_hint_y: None
                     height: dp(28)
                     text_size: self.width, None
@@ -473,7 +491,7 @@ KV = """
                     id: result_minor
                     text: '次要缺陷: —'
                     font_size: '14sp'
-                    color: C['fg']
+                    color: fg
                     size_hint_y: None
                     height: dp(28)
                     text_size: self.width, None
@@ -486,7 +504,7 @@ KV = """
                     height: dp(2)
                     canvas:
                         Color:
-                            rgba: C['separator']
+                            rgba: separator
                         Rectangle:
                             pos: self.pos
                             size: self.size
@@ -496,7 +514,7 @@ KV = """
                     text: '等待判定'
                     font_size: '26sp'
                     bold: True
-                    color: C['fg_dim']
+                    color: fg_dim
                     size_hint_y: None
                     height: dp(60)
                     text_size: self.width, None
@@ -504,7 +522,7 @@ KV = """
                     valign: 'middle'
                     canvas.before:
                         Color:
-                            rgba: C['bg_card']
+                            rgba: bg_card
                         RoundedRectangle:
                             pos: self.pos
                             size: self.size
