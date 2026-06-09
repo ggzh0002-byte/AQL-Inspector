@@ -33,6 +33,12 @@ jobs:
 
       - name: Build APK with Buildozer
         run: |
+          # 自动接受 Android SDK license
+          yes | $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager --licenses 2>/dev/null || true
+          yes | $ANDROID_SDK_ROOT/tools/bin/sdkmanager --licenses 2>/dev/null || true
+          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses 2>/dev/null || true
+          yes | ~/.buildozer/android/platform/android-sdk/tools/bin/sdkmanager --licenses 2>/dev/null || true
+          # 执行构建
           buildozer android debug 2>&1
 
       - name: Upload APK

@@ -54,8 +54,8 @@ android.minapi = 21
 # (str) Android NDK version to use
 android.ndk = 27b
 
-# (bool) If True, use the Android SDK supplied by the user
-#android.accept_sdk_license = True
+# (bool) Accept Android SDK license automatically
+android.accept_sdk_license = True
 
 # (str) Path to the Android SDK directory
 #android.sdk_path =
