@@ -22,9 +22,8 @@ jobs:
           sudo apt-get update -qq
           sudo apt-get install -y -qq \
             git zip unzip openjdk-17-jdk \
-            python3-pip autoconf libtool \
-            pkg-config zlib1g-dev libncurses5-dev \
-            libncursesw5-dev libtinfo5 cmake libffi-dev \
+            python3-pip python-is-python3 autoconf libtool \
+            pkg-config zlib1g-dev libncurses-dev cmake libffi-dev \
             libssl-dev libltdl-dev
 
       - name: Install python-for-android (p4a) + Buildozer
